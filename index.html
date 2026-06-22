@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bouchang Wakam Anorld Denis — Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{--bg-deep:#050d1a;--bg-dark:#0a1628;--bg-card:#0f1f35;--bg-card2:#122038;--blue-bright:#2563eb;--blue-light:#3b82f6;--blue-glow:#60a5fa;--blue-pale:#1e3a5f;--text-primary:#f0f6ff;--text-secondary:#94b4d4;--text-muted:#4a6a8a;--border:rgba(59,130,246,0.15);--border-bright:rgba(59,130,246,0.4);}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--bg-deep);color:var(--text-primary);font-family:'Space Grotesk',sans-serif;font-size:15px;line-height:1.6;overflow-x:hidden;}
+  nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(5,13,26,0.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);display:flex;align-items:center;padding:0 2rem;height:64px;}
+  .nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;margin-right:auto;}
+  .nav-avatar{width:38px;height:38px;border-radius:50%;background:var(--blue-pale);border:2px solid var(--blue-bright);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;color:var(--blue-glow);font-family:'Syne',sans-serif;}
+  .nav-name{font-family:'Syne',sans-serif;font-weight:700;font-size:16px;color:var(--text-primary);}
+  .nav-name span{color:var(--blue-bright);}
+  .nav-links{display:flex;list-style:none;}
+  .nav-links a{text-decoration:none;color:var(--text-secondary);font-size:13px;font-weight:500;padding:0 12px;height:64px;display:flex;align-items:center;gap:5px;transition:color 0.2s;border-bottom:2px solid transparent;}
+  .nav-links a:hover{color:var(--blue-glow);border-bottom-color:var(--blue-bright);}
+  section{padding:80px 6rem;}
+  .section-label{display:inline-flex;align-items:center;gap:8px;background:var(--bg-card);border:1px solid var(--border);border-radius:50px;padding:8px 20px;font-size:13px;color:var(--text-secondary);margin-bottom:20px;}
+  .section-title{font-family:'Syne',sans-serif;font-size:clamp(1.8rem,4vw,2.6rem);font-weight:800;color:var(--blue-bright);text-align:center;margin-bottom:12px;}
+  .section-sub{color:var(--text-secondary);text-align:center;max-width:620px;margin:0 auto 50px;font-size:14px;line-height:1.7;}
+
+  /* HERO */
+  #accueil{min-height:100vh;display:flex;align-items:center;padding:80px 6rem 0;position:relative;overflow:hidden;}
+  #accueil::before{content:'';position:absolute;top:-200px;right:-200px;width:600px;height:600px;background:radial-gradient(circle,rgba(37,99,235,0.12) 0%,transparent 70%);pointer-events:none;}
+  .hero-left{flex:1;z-index:1;}
+  .hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(37,99,235,0.1);border:1px solid var(--border-bright);border-radius:50px;padding:6px 16px;font-size:12px;color:var(--blue-glow);margin-bottom:24px;font-weight:500;}
+  .hero-badge::before{content:'';width:8px;height:8px;border-radius:50%;background:var(--blue-bright);animation:pulse 2s infinite;}
+  @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.5;transform:scale(0.8)}}
+  .hero-name{font-family:'Syne',sans-serif;font-size:clamp(2.2rem,5vw,3.8rem);font-weight:800;color:var(--blue-bright);line-height:1.1;margin-bottom:8px;}
+  .hero-title{font-family:'Syne',sans-serif;font-size:clamp(1rem,2vw,1.4rem);color:var(--text-secondary);margin-bottom:24px;height:32px;}
+  .typed-cursor{color:var(--blue-bright);animation:blink 1s infinite;}
+  @keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+  .hero-desc{max-width:500px;color:var(--text-secondary);font-size:15px;line-height:1.7;margin-bottom:36px;}
+  .hero-btns{display:flex;gap:12px;flex-wrap:wrap;align-items:center;}
+  .btn-primary{display:inline-flex;align-items:center;gap:8px;background:var(--blue-bright);color:#fff;text-decoration:none;padding:12px 24px;border-radius:8px;font-weight:600;font-size:14px;transition:background 0.2s,transform 0.15s;}
+  .btn-primary:hover{background:var(--blue-light);transform:translateY(-1px);}
+  .btn-icon{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:8px;background:var(--bg-card);border:1px solid var(--border-bright);color:var(--text-secondary);text-decoration:none;font-size:18px;transition:all 0.2s;}
+  .btn-icon:hover{border-color:var(--blue-bright);color:var(--blue-glow);transform:translateY(-1px);}
+  .hero-right{flex:0 0 380px;display:flex;align-items:center;justify-content:center;position:relative;z-index:1;}
+  .hero-photo-wrap{position:relative;width:260px;height:260px;}
+  .hero-photo-circle{width:260px;height:260px;border-radius:50%;background:var(--bg-card2);border:3px solid var(--blue-pale);display:flex;align-items:center;justify-content:center;overflow:hidden;}
+  .hero-photo-initials{font-family:'Syne',sans-serif;font-size:56px;font-weight:800;color:var(--blue-pale);user-select:none;}
+  .floating-badge{position:absolute;background:var(--blue-bright);color:#fff;border-radius:50px;padding:8px 16px;font-size:12px;font-weight:600;white-space:nowrap;box-shadow:0 4px 20px rgba(37,99,235,0.4);}
+  .fb-alternance{top:10px;right:-60px;animation:float1 3s ease-in-out infinite;}
+  .fb-cv{bottom:60px;left:-70px;animation:float2 3.5s ease-in-out infinite;}
+  .fb-stage{bottom:10px;right:-50px;animation:float3 4s ease-in-out infinite;}
+  @keyframes float1{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+  @keyframes float2{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+  @keyframes float3{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+
+  /* ABOUT */
+  #about{background:var(--bg-dark);}
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+  .about-card{background:var(--bg-card);border:1px solid var(--border);border-left:3px solid var(--blue-bright);border-radius:0 12px 12px 0;padding:24px;transition:border-color 0.2s,background 0.2s;}
+  .about-card:hover{background:var(--bg-card2);border-left-color:var(--blue-glow);}
+  .about-card h3{font-family:'Syne',sans-serif;font-size:13px;font-weight:700;color:var(--blue-bright);margin-bottom:12px;text-transform:uppercase;letter-spacing:0.05em;}
+  .about-card p{color:var(--text-secondary);font-size:14px;line-height:1.7;}
+  .about-right{display:flex;flex-direction:column;gap:20px;}
+  .stats-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  .stat-box{background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:20px;text-align:center;}
+  .stat-number{font-family:'Syne',sans-serif;font-size:2rem;font-weight:800;color:var(--blue-bright);display:block;}
+  .stat-label{font-size:12px;color:var(--text-muted);margin-top:4px;}
+
+  /* EDUCATION */
+  .edu-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:0;}
+  .edu-card{background:var(--bg-card);border:1px solid var(--border);border-radius:20px;padding:36px 24px;text-align:center;cursor:pointer;transition:all 0.25s;position:relative;overflow:hidden;}
+  .edu-card:hover{border-color:var(--border-bright);transform:translateY(-6px);box-shadow:0 20px 40px rgba(37,99,235,0.15);}
+  .edu-card-icon{font-size:36px;margin-bottom:16px;display:block;}
+  .edu-card-title{font-family:'Syne',sans-serif;font-size:18px;font-weight:700;color:var(--text-primary);margin-bottom:8px;}
+  .edu-card-sub{font-size:13px;color:var(--blue-glow);margin-bottom:20px;}
+  .edu-card-btn{display:inline-flex;align-items:center;gap:6px;color:var(--text-muted);font-size:13px;font-weight:500;transition:color 0.2s;}
+  .edu-card:hover .edu-card-btn{color:var(--blue-glow);}
+
+  /* MODAL */
+  .modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.75);z-index:200;align-items:center;justify-content:center;backdrop-filter:blur(4px);}
+  .modal-overlay.open{display:flex;}
+  .modal{background:var(--bg-dark);border:1px solid var(--border-bright);border-radius:20px;padding:40px;max-width:600px;width:90%;position:relative;max-height:80vh;overflow-y:auto;}
+  .modal-close{position:absolute;top:16px;right:16px;background:var(--bg-card);border:1px solid var(--border);color:var(--text-secondary);width:32px;height:32px;border-radius:50%;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;transition:all 0.2s;}
+  .modal-close:hover{color:var(--blue-glow);border-color:var(--blue-bright);}
+  .modal h2{font-family:'Syne',sans-serif;font-size:22px;font-weight:800;color:var(--blue-bright);margin-bottom:24px;}
+  .timeline{position:relative;padding-left:24px;}
+  .timeline::before{content:'';position:absolute;left:6px;top:0;bottom:0;width:2px;background:var(--blue-pale);}
+  .tl-item{position:relative;margin-bottom:28px;}
+  .tl-dot{position:absolute;left:-22px;top:6px;width:12px;height:12px;border-radius:50%;background:var(--blue-bright);border:2px solid var(--bg-deep);box-shadow:0 0 0 3px rgba(37,99,235,0.25);}
+  .tl-date{font-size:11px;color:var(--blue-glow);font-weight:600;margin-bottom:4px;text-transform:uppercase;letter-spacing:0.05em;}
+  .tl-title{font-family:'Syne',sans-serif;font-size:15px;font-weight:700;color:var(--text-primary);margin-bottom:4px;}
+  .tl-sub{font-size:13px;color:var(--text-secondary);line-height:1.6;}
+
+  /* STACK */
+  #stack{background:var(--bg-dark);}
+  .stack-cards{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+  .stack-card{background:var(--bg-card);border:1px solid var(--border);border-radius:20px;padding:28px;}
+  .stack-card-header{display:flex;align-items:center;gap:12px;margin-bottom:28px;}
+  .stack-card-icon{width:40px;height:40px;border-radius:10px;background:rgba(37,99,235,0.12);border:1px solid var(--border-bright);display:flex;align-items:center;justify-content:center;font-size:20px;}
+  .stack-card-title{font-family:'Syne',sans-serif;font-size:18px;font-weight:700;color:var(--blue-bright);}
+  .skill-row{margin-bottom:18px;}
+  .skill-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;}
+  .skill-name{font-size:14px;color:var(--text-primary);font-weight:500;}
+  .skill-pct{font-size:13px;color:var(--text-secondary);}
+  .skill-bar-bg{height:6px;background:rgba(255,255,255,0.06);border-radius:3px;overflow:hidden;}
+  .skill-bar{height:100%;background:var(--blue-bright);border-radius:3px;transition:width 1.2s cubic-bezier(0.4,0,0.2,1);width:0;}
+
+  /* PROJETS */
+  .projets-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px;}
+  .projet-card{background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:28px;transition:all 0.2s;position:relative;overflow:hidden;}
+  .projet-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--blue-bright);border-radius:16px 16px 0 0;}
+  .projet-card:hover{border-color:var(--border-bright);transform:translateY(-4px);}
+  .projet-icon{width:48px;height:48px;border-radius:12px;background:rgba(37,99,235,0.12);border:1px solid var(--border-bright);display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:16px;}
+  .projet-title{font-family:'Syne',sans-serif;font-size:16px;font-weight:700;color:var(--text-primary);margin-bottom:10px;}
+  .projet-desc{font-size:13px;color:var(--text-secondary);line-height:1.6;margin-bottom:16px;}
+  .projet-tags{display:flex;flex-wrap:wrap;gap:6px;}
+  .tag{background:rgba(37,99,235,0.1);border:1px solid rgba(37,99,235,0.25);color:var(--blue-glow);font-size:11px;font-weight:600;padding:3px 10px;border-radius:50px;text-transform:uppercase;letter-spacing:0.03em;}
+
+  /* CERTIFICATIONS */
+  #certifications{background:var(--bg-dark);}
+  .certs-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:20px;}
+  .cert-card{background:var(--bg-card);border:1px solid var(--border);border-radius:20px;padding:28px 20px;text-align:center;transition:all 0.25s;}
+  .cert-card:hover{border-color:var(--border-bright);transform:translateY(-4px);box-shadow:0 12px 30px rgba(37,99,235,0.15);}
+  .cert-badge-top{display:inline-block;background:rgba(37,99,235,0.12);border:1px solid var(--border-bright);color:var(--blue-glow);font-size:11px;font-weight:600;padding:4px 14px;border-radius:50px;margin-bottom:20px;}
+  .cert-logo{width:72px;height:72px;border-radius:14px;background:var(--bg-card2);display:flex;align-items:center;justify-content:center;font-size:36px;margin:0 auto 16px;border:1px solid var(--border);}
+  .cert-name{font-family:'Syne',sans-serif;font-size:15px;font-weight:700;color:var(--text-primary);margin-bottom:6px;}
+  .cert-org{font-size:12px;color:var(--text-muted);margin-bottom:20px;}
+  .cert-btn{display:inline-flex;align-items:center;gap:6px;background:transparent;border:1px solid var(--border-bright);color:var(--blue-glow);font-size:13px;font-weight:600;padding:8px 20px;border-radius:50px;cursor:pointer;transition:all 0.2s;text-decoration:none;}
+  .cert-btn:hover{background:rgba(37,99,235,0.1);}
+
+  /* CONTACT */
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:start;}
+  .contact-form-card{background:var(--bg-card);border:1px solid var(--border-bright);border-radius:16px;padding:28px;}
+  .contact-form-card h3{font-family:'Syne',sans-serif;font-size:18px;font-weight:700;color:var(--blue-bright);margin-bottom:20px;}
+  .form-input{width:100%;background:var(--bg-dark);border:1px solid var(--border);border-radius:10px;padding:12px 16px;color:var(--text-primary);font-family:'Space Grotesk',sans-serif;font-size:14px;outline:none;transition:border-color 0.2s;margin-bottom:12px;display:block;}
+  .form-input:focus{border-color:var(--blue-bright);}
+  .form-input::placeholder{color:var(--text-muted);}
+  textarea.form-input{resize:vertical;min-height:120px;}
+  .form-btn{width:100%;background:var(--blue-bright);color:#fff;border:none;border-radius:10px;padding:14px;font-family:'Syne',sans-serif;font-size:15px;font-weight:700;cursor:pointer;transition:background 0.2s,transform 0.15s;margin-top:4px;}
+  .form-btn:hover{background:var(--blue-light);transform:translateY(-1px);}
+  .contact-info{display:flex;flex-direction:column;gap:14px;}
+  .contact-info-item{background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:18px 20px;transition:border-color 0.2s;}
+  .contact-info-item:hover{border-color:var(--border-bright);}
+  .ci-label{font-size:11px;color:var(--text-muted);margin-bottom:4px;font-weight:600;text-transform:uppercase;letter-spacing:0.05em;}
+  .ci-value{font-size:14px;color:var(--text-secondary);font-weight:500;}
+
+  footer{border-top:1px solid var(--border);padding:24px 6rem;display:flex;align-items:center;justify-content:space-between;color:var(--text-muted);font-size:13px;}
+  .scroll-top{position:fixed;bottom:28px;right:28px;width:44px;height:44px;border-radius:50%;background:var(--blue-bright);color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;border:none;font-size:20px;box-shadow:0 4px 20px rgba(37,99,235,0.4);transition:all 0.2s;opacity:0;pointer-events:none;z-index:90;}
+  .scroll-top.visible{opacity:1;pointer-events:auto;}
+  .scroll-top:hover{background:var(--blue-light);transform:translateY(-2px);}
+  .fade-in{opacity:0;transform:translateY(24px);transition:opacity 0.6s ease,transform 0.6s ease;}
+  .fade-in.visible{opacity:1;transform:none;}
+
+  @media(max-width:900px){
+    nav{padding:0 1rem;}
+    .nav-links{display:none;}
+    #accueil{flex-direction:column;padding:100px 1.5rem 40px;text-align:center;}
+    .hero-right{margin-top:40px;}
+    section{padding:60px 1.5rem;}
+    .about-grid,.edu-cards,.stack-cards,.contact-grid{grid-template-columns:1fr;}
+    footer{flex-direction:column;gap:8px;padding:24px 1.5rem;text-align:center;}
+    .fb-alternance{right:-20px;} .fb-cv{left:-30px;} .fb-stage{right:-20px;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#accueil" class="nav-logo">
+    <div class="nav-avatar">BW</div>
+    <span class="nav-name">Bouchang<span>.</span></span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#accueil">🏠 Accueil</a></li>
+    <li><a href="#about">👤 About</a></li>
+    <li><a href="#education">🎓 Éducation</a></li>
+    <li><a href="#stack">⚙️ Stack</a></li>
+    <li><a href="#projets">💻 Projets</a></li>
+    <li><a href="#certifications">🏆 Certifications</a></li>
+    <li><a href="#contact">✉️ Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="accueil">
+  <div class="hero-left fade-in">
+    <div class="hero-badge">Disponible pour alternance dès septembre 2026</div>
+    <h1 class="hero-name">Bouchang Wakam<br>Anorld Denis</h1>
+    <p class="hero-title"><span id="typed"></span><span class="typed-cursor">|</span></p>
+    <p class="hero-desc">Passionné par les réseaux et l'infrastructure informatique, je construis des systèmes robustes et sécurisés. Chaque configuration est une opportunité d'apprendre et d'évoluer.</p>
+    <div class="hero-btns">
+      <a href="#contact" class="btn-primary">Me contacter →</a>
+      <a href="mailto:wakamdevis@gmail.com" class="btn-icon" title="Email">✉️</a>
+    </div>
+  </div>
+  <div class="hero-right fade-in">
+    <div class="hero-photo-wrap">
+      <div class="hero-photo-circle"><span class="hero-photo-initials">BW</span></div>
+      <div class="floating-badge fb-alternance">Recherche une Alternance</div>
+      <div class="floating-badge fb-cv">Mon CV</div>
+      <div class="floating-badge fb-stage">Stage — CDC Habitat</div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div style="text-align:center;margin-bottom:40px;" class="fade-in">
+    <div class="section-label">👤 À propos de moi</div>
+  </div>
+  <div class="about-grid fade-in">
+    <div style="display:flex;flex-direction:column;gap:20px;">
+      <div class="about-card">
+        <h3>Profil</h3>
+        <p>Je suis Bouchang Wakam Anorld Denis, étudiant en BTS SIO option SISR à l'ITIC Paris. Passionné par les infrastructures réseau et les systèmes, j'aime comprendre comment les choses fonctionnent et les configurer correctement.</p>
+      </div>
+      <div class="about-card">
+        <h3>Compétences techniques</h3>
+        <p>Administration de réseaux, configuration de routeurs MikroTik, pare-feu pfSense, Active Directory, Windows Server et protocoles de routage dynamique comme RIP.</p>
+      </div>
+      <div class="about-card">
+        <h3>Soft Skills</h3>
+        <p>Curieux et rigoureux, je m'adapte facilement à de nouveaux environnements. J'apprécie le travail en équipe et fais preuve de ponctualité et de motivation dans tout ce que j'entreprends.</p>
+      </div>
+    </div>
+    <div class="about-right">
+      <div class="about-card">
+        <h3>Recherche</h3>
+        <p>Je recherche une alternance en administration systèmes et réseaux à partir de septembre 2026, après mon stage chez CDC Habitat débutant en juin 2026. Rythme souhaité : 3 jours en entreprise, 2 jours à l'école.</p>
+      </div>
+      <div class="stats-grid">
+        <div class="stat-box"><span class="stat-number">2+</span><span class="stat-label">Projets réseau</span></div>
+        <div class="stat-box"><span class="stat-number">6+</span><span class="stat-label">Technologies</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="fade-in" style="text-align:center;">
+    <div class="section-label">🎓 Résumé</div>
+    <h2 class="section-title">Formations & Expériences.</h2>
+    <p class="section-sub">Un parcours académique orienté vers les systèmes et réseaux : mes formations et expériences constituent le socle de mes compétences techniques.</p>
+  </div>
+  <div class="edu-cards fade-in">
+    <div class="edu-card" onclick="openModal('formations')">
+      <span class="edu-card-icon">🎓</span>
+      <div class="edu-card-title">Formations</div>
+      <div class="edu-card-sub">Parcours académique</div>
+      <div class="edu-card-btn">Cliquez ici →</div>
+    </div>
+    <div class="edu-card" onclick="openModal('experiences')">
+      <span class="edu-card-icon">💼</span>
+      <div class="edu-card-title">Expériences</div>
+      <div class="edu-card-sub">Activité professionnelle</div>
+      <div class="edu-card-btn">Cliquez ici →</div>
+    </div>
+    <div class="edu-card" onclick="alert('CV bientôt disponible !')">
+      <span class="edu-card-icon">⬇️</span>
+      <div class="edu-card-title">Télécharger mon CV</div>
+      <div class="edu-card-sub">Stage / Alternance</div>
+      <div class="edu-card-btn">Cliquez ici →</div>
+    </div>
+  </div>
+</section>
+
+<!-- MODALS -->
+<div class="modal-overlay" id="modal-formations">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('formations')">✕</button>
+    <h2>🎓 Formations</h2>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-date">2025 – 2027</div>
+        <div class="tl-title">BTS SIO — Option SISR</div>
+        <div class="tl-sub">ITIC Paris — Solutions d'Infrastructure, Systèmes et Réseaux. Actuellement en fin de 1ère année, passage en 2ème année validé.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-date">Avant 2025</div>
+        <div class="tl-title">Baccalauréat</div>
+        <div class="tl-sub">Obtention du baccalauréat, base pour la poursuite en BTS SIO option SISR.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-experiences">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('experiences')">✕</button>
+    <h2>💼 Expériences professionnelles</h2>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-date">Juin 2026</div>
+        <div class="tl-title">Stage — CDC Habitat</div>
+        <div class="tl-sub">Administration systèmes et réseaux · Support et maintenance de l'infrastructure informatique · Gestion des équipements réseau.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-date">2020</div>
+        <div class="tl-title">Stage — Port Autonome de Douala (Cameroun)</div>
+        <div class="tl-sub">Direction des Systèmes d'Information · Administration de bases de données · Maintenance du parc informatique · Support utilisateurs.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STACK -->
+<section id="stack">
+  <div class="fade-in" style="text-align:center;">
+    <div class="section-label">⚙️ Stack</div>
+    <h2 class="section-title">Stack Technique</h2>
+    <p class="section-sub">Toujours en apprentissage, voici les technologies que je maîtrise et qui m'accompagnent dans mon parcours en systèmes et réseaux.</p>
+  </div>
+  <div class="stack-cards fade-in">
+    <div class="stack-card">
+      <div class="stack-card-header">
+        <div class="stack-card-icon">🖥️</div>
+        <div class="stack-card-title">Systèmes</div>
+      </div>
+      <div class="skill-row"><div class="skill-top"><span class="skill-name">Windows Server</span><span class="skill-pct">70%</span></div><div class="skill-bar-bg"><div class="skill-bar" data-width="70"></div></div></div>
+      <div class="skill-row"><div class="skill-top"><span class="skill-name">Linux</span><span class="skill-pct">60%</span></div><div class="skill-bar-bg"><div class="skill-bar" data-width="60"></div></div></div>
+      <div class="skill-row"><div class="skill-top"><span class="skill-name">Active Directory</span><span class="skill-pct">65%</span></div><div class="skill-bar-bg"><div class="skill-bar" data-width="65"></div></div></div>
+      <div class="skill-row"><div class="skill-top"><span class="skill-name">Virtualisation (VirtualBox)</span><span class="skill-pct">55%</span></div><div class="skill-bar-bg"><div class="skill-bar" data-width="55"></div></div></div>
+    </div>
+    <div class="stack-card">
+      <div class="stack-card-header">
+        <div class="stack-card-icon">📡</div>
+        <div class="stack-card-title">Réseaux</div>
+      </div>
+      <div class="skill-row"><div class="skill-top"><span class="skill-name">pfSense / Firewall</span><span class="skill-pct">65%</span></div><div class="skill-bar-bg"><div class="skill-bar" data-width="65"></div></div></div>
+      <div class="skill-row"><div class="skill-top"><span class="skill-name">MikroTik</span><span class="skill-pct">60%</span></div><div class="skill-bar-bg"><div class="skill-bar" data-width="60"></div></div></div>
+      <div class="skill-row"><div class="skill-top"><span class="skill-name">VLAN / Protocole RIP</span><span class="skill-pct">55%</span></div><div class="skill-bar-bg"><div class="skill-bar" data-width="55"></div></div></div>
+      <div class="skill-row"><div class="skill-top"><span class="skill-name">Haute Disponibilité</span><span class="skill-pct">50%</span></div><div class="skill-bar-bg"><div class="skill-bar" data-width="50"></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJETS -->
+<section id="projets">
+  <div class="fade-in" style="text-align:center;">
+    <div class="section-label">💻 Projets</div>
+    <h2 class="section-title">Projets réalisés</h2>
+    <p class="section-sub">Des projets académiques concrets mettant en pratique mes compétences en infrastructure réseau et systèmes.</p>
+  </div>
+  <div class="projets-grid fade-in">
+    <div class="projet-card">
+      <div class="projet-icon">🛡️</div>
+      <div class="projet-title">Haute Disponibilité pfSense</div>
+      <p class="projet-desc">Mise en place d'une architecture de haute disponibilité avec deux pare-feu pfSense. Configuration du basculement automatique (CARP) pour assurer la continuité du service en cas de panne.</p>
+      <div class="projet-tags"><span class="tag">pfSense</span><span class="tag">Firewall</span><span class="tag">CARP</span><span class="tag">Haute dispo.</span></div>
+    </div>
+    <div class="projet-card">
+      <div class="projet-icon">📡</div>
+      <div class="projet-title">Infrastructure Réseau MikroTik</div>
+      <p class="projet-desc">Conception et configuration d'un réseau complet : 4 PC, 4 routeurs MikroTik, 1 switch et 1 point d'accès WiFi. Mise en place du protocole de routage dynamique RIP.</p>
+      <div class="projet-tags"><span class="tag">MikroTik</span><span class="tag">RIP</span><span class="tag">Routage</span><span class="tag">Switch</span><span class="tag">WiFi</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section id="certifications">
+  <div class="fade-in" style="text-align:center;">
+    <div class="section-label">🏆 Certifications</div>
+    <h2 class="section-title">Mes Certifications</h2>
+    <p class="section-sub">Certifications professionnelles qui démontrent mon engagement envers l'apprentissage continu.</p>
+  </div>
+  <div class="certs-grid fade-in">
+    <div class="cert-card">
+      <div class="cert-badge-top">Attestation de suivi</div>
+      <div class="cert-logo">🔒</div>
+      <div class="cert-name">RGPD & CNIL</div>
+      <div class="cert-org">CNIL</div>
+      <a href="#" class="cert-btn">👁 Certification</a>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="fade-in" style="text-align:center;margin-bottom:40px;">
+    <div class="section-label">✉️ Contact</div>
+    <h2 class="section-title">Contact</h2>
+    <p class="section-sub">Discutons de la manière dont nous pouvons travailler ensemble.</p>
+  </div>
+  <div class="contact-grid fade-in">
+    <div class="contact-form-card">
+      <h3>Message</h3>
+      <input type="text" class="form-input" placeholder="Votre Nom">
+      <input type="email" class="form-input" placeholder="Votre Email">
+      <textarea class="form-input" placeholder="Votre Message"></textarea>
+      <button class="form-btn" onclick="alert('Merci pour votre message !')">Envoyez</button>
+    </div>
+    <div class="contact-info">
+      <div class="contact-info-item">
+        <div class="ci-label">Email</div>
+        <div class="ci-value">wakamdevis@gmail.com</div>
+      </div>
+      <div class="contact-info-item">
+        <div class="ci-label">LinkedIn</div>
+        <div class="ci-value">À compléter</div>
+      </div>
+      <div class="contact-info-item">
+        <div class="ci-label">GitHub</div>
+        <div class="ci-value">À compléter</div>
+      </div>
+      <div class="contact-info-item">
+        <div class="ci-label">Disponibilité</div>
+        <div class="ci-value">Alternance — Septembre 2026</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span>© 2026 Bouchang Wakam Anorld Denis</span>
+  <span>BTS SIO SISR — ITIC Paris</span>
+</footer>
+
+<button class="scroll-top" id="scrollBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+const titles=["Étudiant BTS SIO SISR","Admin Systèmes & Réseaux","Futur Alternant"];
+let ti=0,ci=0,del=false;
+const tel=document.getElementById('typed');
+function type(){
+  const cur=titles[ti];
+  if(!del){tel.textContent=cur.slice(0,++ci);if(ci===cur.length){del=true;setTimeout(type,1800);return;}}
+  else{tel.textContent=cur.slice(0,--ci);if(ci===0){del=false;ti=(ti+1)%titles.length;}}
+  setTimeout(type,del?60:80);
+}
+type();
+
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.classList.add('visible');
+      e.target.querySelectorAll('.skill-bar').forEach(b=>{b.style.width=b.dataset.width+'%';});
+    }
+  });
+},{threshold:0.1});
+document.querySelectorAll('.fade-in').forEach(el=>obs.observe(el));
+
+window.addEventListener('scroll',()=>{
+  document.getElementById('scrollBtn').classList.toggle('visible',window.scrollY>300);
+});
+
+function openModal(id){document.getElementById('modal-'+id).classList.add('open');}
+function closeModal(id){document.getElementById('modal-'+id).classList.remove('open');}
+document.querySelectorAll('.modal-overlay').forEach(m=>{
+  m.addEventListener('click',e=>{if(e.target===m)m.classList.remove('open');});
+});
+</script>
+</body>
+</html>
